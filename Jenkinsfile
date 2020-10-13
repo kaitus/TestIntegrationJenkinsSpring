@@ -29,9 +29,6 @@ pipeline {
 	stage('deploy') {
             steps {
                 archiveArtifacts 'build/libs/*.jar,target/*.hpi'
-                //sh './gradlew bootRun'
-            }
-            steps {
                 sh './gradlew bootRun'
             }
         }
