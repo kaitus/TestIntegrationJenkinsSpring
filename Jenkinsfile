@@ -8,15 +8,9 @@ pipeline {
                 git 'https://github.com/kaitus/TestIntegrationJenkinsSpring.git'
             }
         }
-	stage('build') {
-            steps { //build application
-                //bat 'gradlew build'
-				sh 'chmod +x gradlew'
-                sh './gradlew build'
-            }
-        }
 	stage('deploy') {
             steps { //run application
+				sh 'chmod +x gradlew'
                 sh './gradlew compileJava'
             }
         }
