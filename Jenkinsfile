@@ -4,34 +4,32 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
-            steps { //Checking out the repo
-                git 'https://github.com/kaitus/TestIntegrationJenkinsSpring.git'
+        stage('Initialize') {
+            steps {
+                sh 'chmod +x gradlew'
+                sh '''echo PATH = ${PATH}
+                ./gradlew clean'''
             }
         }
 	stage('compile') {
-            steps { //Compile application
-                //bat 'gradlew assemble'
-				sh 'chmod +x gradlew'
+            steps {
                 sh './gradlew assemble'
             }
         }
 	stage('Test') {
             steps {
-                //bat 'gradlew test'
                 sh './gradlew test'
             }
         }
 	stage('build') {
-            steps { //build application
-                //bat 'gradlew build'
+            steps {
                 sh './gradlew build'
             }
         }
 	stage('deploy') {
-            steps { //run application
-                //sh './gradlew assemble docker dockerRun'
-                sh './gradlew bootRun'
+            steps {
+                archiveArtifacts 'target/*.jar,target/*.hpi'
+                //sh './gradlew bootRun'
             }
         }
     }
