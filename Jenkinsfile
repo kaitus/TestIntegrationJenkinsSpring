@@ -12,6 +12,7 @@ pipeline {
 	stage('compile') {
             steps { //Compile application
                 //bat 'gradlew assemble'
+				sh 'chmod +x gradlew'
                 sh './gradlew assemble'
             }
         }
