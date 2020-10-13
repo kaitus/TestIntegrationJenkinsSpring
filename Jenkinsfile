@@ -31,7 +31,6 @@ pipeline {
 	stage('deploy') {
             steps { //run application
                 //sh './gradlew assemble docker dockerRun'
-                sh 'ifconfig'
                 sh './gradlew bootRun'
             }
         }
