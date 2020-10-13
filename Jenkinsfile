@@ -7,8 +7,8 @@ pipeline {
         stage('Initialize') {
             steps {
                 sh 'chmod +x gradlew'
-                sh '''echo PATH = ${PATH}
-                ./gradlew clean'''
+                sh '''echo PATH = ${PATH}'''
+                sh './gradlew clean'
             }
         }
 	stage('compile') {
@@ -28,7 +28,7 @@ pipeline {
         }
 	stage('deploy') {
             steps {
-                archiveArtifacts 'target/*.jar,target/*.hpi'
+                archiveArtifacts 'build/libs/*.jar,target/*.hpi'
                 //sh './gradlew bootRun'
             }
         }
