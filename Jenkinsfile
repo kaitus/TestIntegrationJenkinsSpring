@@ -31,6 +31,9 @@ pipeline {
                 archiveArtifacts 'build/libs/*.jar,target/*.hpi'
                 //sh './gradlew bootRun'
             }
+            steps {
+                sh './gradlew bootRun'
+            }
         }
     }
     post {
