@@ -32,7 +32,7 @@ pipeline {
             steps { //run application
                 //sh './gradlew assemble docker dockerRun'
                 sh './gradlew compileJava'
-                sh './gradlew SpringDemoJenkinsApplication.main'
+                sh './gradlew deploy'
             }
         }
     }
